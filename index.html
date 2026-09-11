@@ -19,10 +19,22 @@
         <div style="text-align: center; max-width: 420px; padding: 28px; border: 1px solid #1f293d; border-radius: 16px; background: #121622; box-shadow: 0 20px 30px rgba(0,0,0,0.5);">
           <div style="width: 44px; height: 44px; border: 3px solid rgba(236, 72, 153, 0.2); border-top-color: #ec4899; border-radius: 50%; margin: 0 auto 16px auto; animation: spin 1s linear infinite;"></div>
           <h2 style="font-size: 17px; font-weight: 600; margin: 0 0 8px 0; color: #ffffff;">মাই ব্যবসা ড্যাশবোর্ড লোড হচ্ছে...</h2>
-          <p style="font-size: 13px; color: #9ca3af; margin: 0; line-height: 1.5;">অনুগ্রহ করে কিছুক্ষণ অপেক্ষা করুন...</p>
+          <p id="initial-loading-status" style="font-size: 13px; color: #9ca3af; margin: 0; line-height: 1.5;">অনুগ্রহ করে কিছুক্ষণ অপেক্ষা করুন...</p>
+          <button id="initial-loading-retry" style="display: none; margin-top: 14px; padding: 7px 18px; background: #ec4899; color: #ffffff; border: none; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;" onclick="window.location.reload()">পুনরায় চেষ্টা করুন</button>
         </div>
       </div>
     </div>
+    <script>
+      window.__appLoaded = false;
+      setTimeout(function() {
+        if (!window.__appLoaded) {
+          var s = document.getElementById('initial-loading-status');
+          var b = document.getElementById('initial-loading-retry');
+          if (s) s.innerText = 'লোড হতে দেরি হচ্ছে। ইন্টারনেট সংযোগ অথবা শিট পারমিশন চেক করুন।';
+          if (b) b.style.display = 'inline-block';
+        }
+      }, 6000);
+    </script>
     <style>
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>

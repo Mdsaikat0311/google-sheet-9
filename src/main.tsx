@@ -9,6 +9,8 @@ window.addEventListener('error', (event) => {
   console.warn('Global error detected:', event.message);
 });
 
+(window as any).__appLoaded = true;
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
