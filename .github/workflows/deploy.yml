@@ -31,13 +31,13 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install
-
-      - name: Build Production Bundle
-        run: npm run build
+        run: npm ci || npm install
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
+
+      - name: Build Production Bundle
+        run: npm run build
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
